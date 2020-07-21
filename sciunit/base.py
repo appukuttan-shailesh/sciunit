@@ -25,7 +25,10 @@ if PYTHON_MAJOR_VERSION < 3:  # Python 2
     json.JSONDecodeError = ValueError
 else:
     from io import StringIO
-    import tkinter
+    try:
+        import tkinter
+    except ImportError:
+        tkinter = None
     FileNotFoundError = FileNotFoundError
 
 KERNEL = ('ipykernel' in sys.modules)
